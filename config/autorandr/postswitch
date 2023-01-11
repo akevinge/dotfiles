@@ -1,0 +1,70 @@
+#!/bin/bash
+
+internal_monitor=eDP-1
+external_monitor=HDMI-1
+
+monitor_add() {
+    echo "Monitor added..."
+	desktops=8 # How many desktops to move to the second monitor
+
+    echo "[Moving...] $desktops desktops from $internal_monitor to $external_monitor"
+	for d in $(bspc query -D -m $internal_monitor | sed "$desktops"q); do
+        echo "$d -> $external_monitor"
+		bspc desktop $d -m $external_monitor
+    done
+    echo "[Moved] $desktops desktops from $internal_monitor to $external_monitor" 
+
+    # Remove "Desktop" created by bspwm
+    echo "[Removing...] desktop 'Desktop'" 
+    bspc desktop Desktop --remove
+    echo "[Removed] desktop 'Desktop'" 
+}
+
+monitor_remove() {
+    echo "Monitor removed..."
+    echo "[Creating...] desktop 'Desktop' on $internal_monitor" 
+	bspc monitor $internal_monitor -a Desktop # Temp desktop because one desktop required per monitor
+    echo "[Created] desktop 'Desktop' on $internal_monitor" 
+
+    echo "[Moving...] all desktops from $internal_monitor to $external_monitor" 
+	# Move everything to external monitor to reorder desktops
+	for d in $(bspc query -D -m $internal_monitor); do
+		bspc desktop $d -m $external_monitor
+	done
+    echo "[Moved] all desktops from $internal_monitor to $external_monitor" 
+
+
+    echo "[Creating...] desktop 'Desktop' on $external_monitor" 
+	# Now move everything back to internal monitor
+	bspc monitor $external_monitor -a ExtDesktop # Temp desktop
+    echo "[Created] desktop 'Desktop' on $external_monitor" 
+
+
+    echo "[Moving...] all desktops from $external_monitor to $internal_monitor" 
+	for d in $(bspc query -D -m $external_monitor); do
+		bspc desktop $d -m $internal_monitor
+	done
+    echo "[Moved] all desktops from $external_monitor to $internal_monitor" 
+
+    echo "[Removing...] desktop 'Desktop'" 
+	bspc desktop Desktop --remove # Remove temp desktops
+    echo "[Removed] desktop 'Desktop'" 
+
+
+    echo "[Removing...] desktop 'ExtDesktop'" 
+	bspc desktop ExtDesktop --remove # Remove temp desktops
+    echo "[Removed] desktop 'ExtDesktop'" 
+
+    bspc monitor $external_monitor --remove
+}
+
+if [[ $(xrandr -q | grep "$external_monitor connected") ]]; then
+    monitor_add
+else
+    monitor_remove
+fi
+
+# restart bspwm
+bspc wm -r
+
+$HOME/.config/polybar/launch.sh $HOME/.config/polybar/minimal/dark.ini &
