@@ -13,7 +13,9 @@ All photos taken from unsplash and r/unixporn discord
 - autorandr
 - feh
 
-Add to .bashrc:
-```
-PATH="${PATH}:/path/to/dotfiles/bin"
+Run to setup symlinks:
+```shell
+cd dotfiles/bin
+chmod +x bin/sym-dotfiles
+./bin/sym-dotfiles
 ```
