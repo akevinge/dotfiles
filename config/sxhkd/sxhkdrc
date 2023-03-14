@@ -5,6 +5,15 @@
     echo -n | xsel -n -i
 ~control + x
     echo -n | xsel -n -i
+# screenshot
+super + a
+    flameshot gui
+
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +10%
+
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -10%
 
 # wm independent hotkeys
 # rofi

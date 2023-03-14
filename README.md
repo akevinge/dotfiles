@@ -1,6 +1,6 @@
 Configs a combination of copy and pasta and custom
 
-All photos taken from unsplash
+All photos taken from unsplash and r/unixporn discord
 
 - bspwm
 - polybar
@@ -12,3 +12,8 @@ All photos taken from unsplash
 - alacritty
 - autorandr
 - feh
+
+Add to .bashrc:
+```
+PATH="${PATH}:/path/to/dotfiles/bin"
+```

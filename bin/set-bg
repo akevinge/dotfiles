@@ -1,0 +1,5 @@
+#!/bin/bash
+
+FULL_DOTFILE_PATH="$(dirname "$(realpath $0)")/../"
+
+feh --bg-fill "$FULL_DOTFILE_PATH/wallpapers/dark-fungus.png"

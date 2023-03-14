@@ -1,0 +1,73 @@
+#!/bin/bash
+
+############################################################
+# Help                                                     #
+############################################################
+Help()
+{e
+   echo "Creates symlinks between dotfiles and targets"
+   echo
+   echo "Syntax: sym-dotfiles [-c|b|h]"
+   echo "options:"
+   echo "h     Print this Help."
+   echo "c     Specify config folder for symlink targets"
+   echo "b     Specify bin folder for symlink targets"
+}
+
+
+FULL_DOTFILE_PATH="$(dirname "$(realpath $0)")/.."
+
+SOURCE_CONFIG_PATH="$FULL_DOTFILE_PATH/config"
+SOURCE_BIN_PATH="$FULL_DOTFILE_PATH/bin"
+
+REMOTE_CONFIG_PATH=${HOME}/.config
+REMOTE_BIN_PATH=${HOME}/.local/bin
+
+while getopts "c:b:h" opt; do
+    case $opt in
+        c) REMOTE_CONFIG_PATH=$OPTARG ;;
+        b) REMOTE_BIN_PATH=$OPTARG    ;;
+        h) 
+         Help
+         exit;;
+    esac
+done
+
+
+############################################################
+# Symlink config                                           #
+############################################################
+# find all existing folders in REMOTE_CONFIG_PATH that match folders in SOURCE_CONFIG_PATH and delete them
+for sf in $SOURCE_CONFIG_PATH/*; do
+    for rf in $REMOTE_CONFIG_PATH/*; do
+        if [ "$(basename "$rf")" = "$(basename "$sf")" ]; then
+            if [ -d $rf ]; then
+                echo "Moving $rf to /tmp"
+                mv $rf /tmp
+            else 
+                echo "Deleting $rf"
+                rm $rf
+            fi
+       fi
+    done
+    sym_target="$REMOTE_CONFIG_PATH/$(basename $sf)"
+    echo -e "Linking $sf to $sym_target\n"
+    ln -s $sf $sym_target
+done
+
+############################################################
+# Symlink bin                                              #
+############################################################
+for sf in $SOURCE_BIN_PATH/*; do
+    for rf in $REMOTE_BIN_PATH/*; do
+        if [ "$(basename "$sf")" = "$(basename "$rf")" ]; then
+            echo "Deleting $rf"
+            rm "$rf"
+        fi
+    done
+    sym_target="$REMOTE_BIN_PATH/$(basename $sf)"
+    echo -e "Linking $sf to $sym_target\n"
+    ln -s $sf $sym_target
+done
+
+    
