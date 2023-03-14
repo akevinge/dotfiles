@@ -4,8 +4,10 @@
 # Help                                                     #
 ############################################################
 Help()
-{e
+{
    echo "Creates symlinks between dotfiles and targets"
+   echo "* Existing configuration folders will be overriden (moved to /tmp)"
+   echo "* Existing symlinks of the same name will be overriden"
    echo
    echo "Syntax: sym-dotfiles [-c|b|h]"
    echo "options:"
