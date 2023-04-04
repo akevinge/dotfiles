@@ -1,0 +1,6 @@
+#!/bin/bash
+
+(alacritty &
+notion-app-enhanced &
+discord &
+slack &) &>/dev/null 

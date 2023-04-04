@@ -2,7 +2,7 @@
 
 # borders
 bpsc config border_width 2
-bspc config focused_border_color "#a1c7b1"
+bspc config focused_border_color "#f791b6"
 
 # bspwm config
 bspc config window_gap          15
@@ -24,11 +24,7 @@ picom &
 dunst &
 
 # start up apps
-firefox &
-# discord &
-# slack &
-# notion &
-# gmail &
+alacritty &
 
 # set monitors
 EXTERNAL=HDMI-1
@@ -54,3 +50,6 @@ xsetroot -cursor_name left_ptr
 # disable tap to click
 synclient MaxTapTime=0
 synclient VertScrollDelta=-111
+
+# scrolling idk
+xinput --set-prop 15 303 1

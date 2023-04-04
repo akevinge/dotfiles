@@ -2,4 +2,4 @@
 
 FULL_DOTFILE_PATH="$(dirname "$(realpath $0)")/../"
 
-feh --bg-fill "$FULL_DOTFILE_PATH/wallpapers/dark-fungus.png"
+feh --bg-fill "$FULL_DOTFILE_PATH/wallpapers/latern-in-rain.jpg"
