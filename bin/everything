@@ -1,6 +1,5 @@
 #!/bin/bash
 
-(alacritty &
-notion-app-enhanced &
+(notion-app-enhanced &
 discord &
 slack &) &>/dev/null 

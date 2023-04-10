@@ -23,12 +23,15 @@ set-bg &
 picom &
 dunst &
 
+# force apps to open in specific workspaces
+bspc rule -a discord desktop=9 state=tiled
+
 # start up apps
 alacritty &
 
 # set monitors
-EXTERNAL=HDMI-1
-PRIMARY=eDP-1
+EXTERNAL=HDMI1
+PRIMARY=eDP1
 
 if [[ $(xrandr -q | grep "$EXTERNAL connected") ]]; then
     xrandr \

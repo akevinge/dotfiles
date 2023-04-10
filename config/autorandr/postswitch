@@ -1,7 +1,7 @@
 #!/bin/bash
 
-internal_monitor=eDP-1
-external_monitor=HDMI-1
+internal_monitor=eDP1
+external_monitor=HDMI1
 
 monitor_add() {
     echo "Monitor added..."

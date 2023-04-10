@@ -1,0 +1,4 @@
+#!/bin/bash
+
+alias open='xdg-open'
+alias wifi='nmcli device wifi'

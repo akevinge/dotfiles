@@ -6,10 +6,11 @@
 Help()
 {
    echo "Creates symlinks between dotfiles and targets"
+   echo "Configures ~/.bashrc"
    echo "* Existing configuration folders will be overriden (moved to /tmp)"
    echo "* Existing symlinks of the same name will be overriden"
    echo
-   echo "Syntax: sym-dotfiles [-c|b|h]"
+   echo "Syntax: update-dotfiles [-c|b|h]"
    echo "options:"
    echo "h     Print this Help."
    echo "c     Specify config folder for symlink targets"
@@ -72,4 +73,9 @@ for sf in $SOURCE_BIN_PATH/*; do
     ln -s $sf $sym_target
 done
 
-    
+############################################################
+# ~/.bashrc inserts                                        #
+############################################################
+bashrc_insert="source $REMOTE_BIN_PATH/aliases # ===== aliases ====="
+grep -qxF "$bashrc_insert" $HOME/.bashrc || echo "$bashrc_insert" >> $HOME/.bashrc
+
