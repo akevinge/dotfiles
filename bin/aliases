@@ -2,3 +2,4 @@
 
 alias open='xdg-open'
 alias wifi='nmcli device wifi'
+alias flameshot='QT_SCREEN_SCALE_FACTORS='' /usr/bin/flameshot'
