@@ -2,6 +2,8 @@
 
 # borders
 bpsc config border_width 2
+bspc config top_padding 0
+bspc config bottom_padding 0
 bspc config focused_border_color "#f791b6"
 
 # bspwm config
