@@ -1,10 +1,21 @@
 #!/bin/bash
 
+# UI
+pgrep -x sxhkd > /dev/null || sxhkd &
+~/.config/polybar/material/scripts/pywal.sh ~/dotfiles/wallpapers/unsplash/elliot-engelmann-dark-mountain.jpg &
+ ~/.config/polybar/launch.sh --forest &
+picom &
+dunst &
+
+# source colors from pywal
+. "${HOME}/.cache/wal/colors.sh"
+
 # borders
-bpsc config border_width 2
+bpsc config border_width 3
 bspc config top_padding 0
 bspc config bottom_padding 0
-bspc config focused_border_color "#f791b6"
+bspc config focused_border_color "$color15"
+bspc config normal_border_color "$color1"
 
 # bspwm config
 bspc config window_gap          15
@@ -18,22 +29,16 @@ bspc config borderless_monocle   false
 
 bspc rule -a firefox rectangle 1920x1080+0+0 center=true
 
-# UI
-pgrep -x sxhkd > /dev/null || sxhkd &
-~/.config/polybar/launch.sh ~/.config/polybar/minimal/light.ini &
-set-bg & 
-picom &
-dunst &
-
 # force apps to open in specific workspaces
 bspc rule -a discord desktop=9 state=tiled
 
 # start up apps
 alacritty &
+google-chrome-stable &
 
 # set monitors
-EXTERNAL=HDMI1
-PRIMARY=eDP1
+EXTERNAL=HDMI-1
+PRIMARY=eDP-1
 
 if [[ $(xrandr -q | grep "$EXTERNAL connected") ]]; then
     xrandr \

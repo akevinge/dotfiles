@@ -18,7 +18,7 @@ XF86AudioLowerVolume
 # wm independent hotkeys
 # rofi
 super + r
-   if [[ $(xrandr -q | grep 'HDMI-1 connected') ]]; then rofi -monitor HDMI-1 -show drun; else rofi run -show drun; fi
+   if [[ $(xrandr -q | grep 'HDMI-1 connected') ]]; then rofi -show drun -no-config -theme $HOME/.config/rofi/launcher.rasi -monitor HDMI-1; else rofi -show drun -no-config -theme $HOME/.config/rofi/launcher.rasi; fi
 
 # language
 ctrl + alt + {1, 2}
@@ -28,9 +28,9 @@ ctrl + alt + {1, 2}
 ctrl + alt + b
     alacritty -e bash -c 'pulseaudio --start ; bluetoothctl'
 # <----- apps ------>
-# firefox
+# browser
 ctrl + super + w
-    firefox
+    google-chrome-stable
 
 ctrl + super + m
     spotify

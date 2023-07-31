@@ -3,7 +3,7 @@ Configs a combination of copy and pasta and custom
 All photos taken from unsplash and r/unixporn discord
 
 - bspwm
-- polybar
+- polybar [this dude's themes](https://github.com/adi1090x/polybar-themes)
 - picom
 - dunst
 - glx (preferred)
