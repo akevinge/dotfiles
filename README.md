@@ -12,6 +12,7 @@ All photos taken from unsplash and r/unixporn discord
 - alacritty
 - autorandr
 - feh
+- [pywal](https://github.com/dylanaraps/pywal)
 
 Run to setup symlinks:
 ```shell
