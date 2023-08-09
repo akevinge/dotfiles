@@ -2,7 +2,7 @@
 
 # UI
 pgrep -x sxhkd > /dev/null || sxhkd &
-~/.config/polybar/material/scripts/pywal.sh ~/dotfiles/wallpapers/unsplash/elliot-engelmann-dark-mountain.jpg &
+~/.config/polybar/material/scripts/pywal.sh ~/dotfiles/wallpapers/what-the-fuck-is-going-on.png &
  ~/.config/polybar/launch.sh --forest &
 picom &
 dunst &
