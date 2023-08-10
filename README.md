@@ -13,6 +13,8 @@ All photos taken from unsplash and r/unixporn discord
 - autorandr
 - feh
 - [pywal](https://github.com/dylanaraps/pywal)
+- xss-lock
+- xsecurelock
 
 Run to setup symlinks:
 ```shell

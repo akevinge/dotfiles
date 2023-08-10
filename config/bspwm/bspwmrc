@@ -2,13 +2,17 @@
 
 # UI
 pgrep -x sxhkd > /dev/null || sxhkd &
-~/.config/polybar/material/scripts/pywal.sh ~/dotfiles/wallpapers/what-the-fuck-is-going-on.png &
- ~/.config/polybar/launch.sh --forest &
+#~/.config/polybar/material/scripts/pywal.sh ~/dotfiles/wallpapers/what-the-fuck-is-going-on.png &&
+~/.config/polybar/launch.sh --forest &
+python3.10 ~/dotfiles/scripts/random_wallpaper.py -i 360 &
 picom &
 dunst &
 
 # source colors from pywal
 . "${HOME}/.cache/wal/colors.sh"
+
+# Registry xsecurelock as xss locker.
+xss-lock xsecurelock &
 
 # borders
 bspc config border_width 1
