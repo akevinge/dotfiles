@@ -27,13 +27,20 @@ ctrl + alt + {1, 2}
 # <----- misc ----->
 ctrl + alt + b
     alacritty -e bash -c 'pulseaudio --start ; bluetoothctl'
+
 # <----- apps ------>
 # browser
 ctrl + super + w
-    google-chrome-stable
+	firefox-dev
+
+ctrl + super + c
+	firefox-dev --new-window https://calendar.google.com
 
 ctrl + super + m
     spotify
+
+ctrl + super + n
+	firefox-dev --new-window https://notion.so
 
 
 # terminal emulator
