@@ -2,10 +2,9 @@
 
 # UI
 pgrep -x sxhkd > /dev/null || sxhkd &
-#~/.config/polybar/material/scripts/pywal.sh ~/dotfiles/wallpapers/mocha-mountain.jpg &
-feh --bg-fill ~/dotfiles/wallpapers/mocha-mountain.jpg &
+~/.config/polybar/material/scripts/pywal.sh ~/dotfiles/wallpapers/unsplash/codioful-formerly-gradienta-uDaW2aMISB4-unsplash.jpg &
+feh --bg-fill ~/dotfiles/wallpapers/unsplash/codioful-formerly-gradienta-uDaW2aMISB4-unsplash.jpg &
 ~/.config/polybar/launch.sh --forest &
-#python3.10 ~/dotfiles/scripts/random_wallpaper.py -i 360 &
 picom &
 dunst &
 
