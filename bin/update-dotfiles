@@ -10,11 +10,12 @@ Help()
    echo "* Existing configuration folders will be overriden (moved to /tmp)"
    echo "* Existing symlinks of the same name will be overriden"
    echo
-   echo "Syntax: update-dotfiles [-c|b|h]"
+   echo "Syntax: update-dotfiles [-c|b|h|f]"
    echo "options:"
    echo "h     Print this Help."
    echo "c     Specify config folder for symlink targets"
    echo "b     Specify bin folder for symlink targets"
+   echo "f     Specify font folder for symlink targets"
 }
 
 
@@ -22,14 +23,21 @@ FULL_DOTFILE_PATH="$(dirname "$(realpath $0)")/.."
 
 SOURCE_CONFIG_PATH="$FULL_DOTFILE_PATH/config"
 SOURCE_BIN_PATH="$FULL_DOTFILE_PATH/bin"
+SOURCE_FONT_PATH="$FULL_DOTFILE_PATH/fonts"
 
 REMOTE_CONFIG_PATH=${HOME}/.config
 REMOTE_BIN_PATH=${HOME}/.local/bin
+REMOTE_FONT_PATH=${HOME}/.local/share/fonts
 
-while getopts "c:b:h" opt; do
+mkdir -p $REMOTE_CONFIG_PATH
+mkdir -p $REMOTE_BIN_PATH
+mkdir -p $REMOTE_FONT_PATH
+
+while getopts "c:b:h:f" opt; do
     case $opt in
         c) REMOTE_CONFIG_PATH=$OPTARG ;;
         b) REMOTE_BIN_PATH=$OPTARG    ;;
+        f) REMOTE_FONT_PATH=$OPTARG   ;;
         h) 
          Help
          exit;;
@@ -64,11 +72,26 @@ done
 for sf in $SOURCE_BIN_PATH/*; do
     for rf in $REMOTE_BIN_PATH/*; do
         if [ "$(basename "$sf")" = "$(basename "$rf")" ]; then
-            echo "Deleting $rf"
-            rm "$rf"
+            echo "Moving $rf to /tmp"
+            mv $rf /tmp
         fi
     done
     sym_target="$REMOTE_BIN_PATH/$(basename $sf)"
+    echo -e "Linking $sf to $sym_target\n"
+    ln -s $sf $sym_target
+done
+
+############################################################
+# Symlink fonts                                              #
+############################################################
+for sf in $SOURCE_FONT_PATH/*; do
+    for rf in $REMOTE_FONT_PATH/*; do
+        if [ "$(basename "$sf")" = "$(basename "$rf")" ]; then
+            echo "Moving $rf to /tmp"
+            mv $rf /tmp
+        fi
+    done
+    sym_target="$REMOTE_FONT_PATH/$(basename $sf)"
     echo -e "Linking $sf to $sym_target\n"
     ln -s $sf $sym_target
 done
