@@ -19,6 +19,6 @@ All photos taken from unsplash and r/unixporn discord
 Run to setup symlinks:
 ```shell
 cd dotfiles/bin
-chmod +x bin/sym-dotfiles
-./bin/sym-dotfiles
+chmod +x bin/update-dotfiles
+./bin/update-dotfiles
 ```
