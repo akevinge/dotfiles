@@ -41,8 +41,8 @@ alacritty &
 firefox-dev &
 
 # set monitors
-EXTERNAL=HDMI-1
-PRIMARY=eDP-1
+EXTERNAL=HDMI1
+PRIMARY=eDP1
 
 if [[ $(xrandr -q | grep "$EXTERNAL connected") ]]; then
     xrandr \

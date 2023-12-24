@@ -7,3 +7,5 @@ alias flameshot='QT_SCREEN_SCALE_FACTORS='' /usr/bin/flameshot'
 alias g='git'
 source /usr/share/bash-completion/completions/git # git completions for alias
 complete -o default -o nospace -F __git_wrap__git_main g
+
+alias c='code'

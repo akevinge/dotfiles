@@ -6,10 +6,10 @@
     # <-- Size -->
     # deprecated but width does not work as of 12/16/22
     # see: https://www.reddit.com/r/i3wm/comments/wndrkw/is_i3_making_dunst_notifications_full_width
-    width = 300
+    geometry = "300x5-30+20"
 
     # <-- Position -->
-    offset = 24x24
+    offset = 4x40
     origin = top-right
     gap_size = 8
 
