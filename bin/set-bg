@@ -2,4 +2,7 @@
 
 FULL_DOTFILE_PATH="$(dirname "$(realpath $0)")/../"
 
-feh --bg-fill "$FULL_DOTFILE_PATH/wallpapers/latern-in-rain.jpg"
+WALLPAPER="$FULL_DOTFILE_PATH/wallpapers/latern-in-rain.jpg"
+
+~/.config/polybar/material/scripts/pywal.sh $WALLPAPER
+feh --bg-fill "$WALLPAPER"

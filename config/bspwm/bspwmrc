@@ -2,8 +2,7 @@
 
 # UI
 pgrep -x sxhkd > /dev/null || sxhkd &
-~/.config/polybar/material/scripts/pywal.sh ~/dotfiles/wallpapers/unsplash/codioful-formerly-gradienta-uDaW2aMISB4-unsplash.jpg &
-feh --bg-fill ~/dotfiles/wallpapers/unsplash/codioful-formerly-gradienta-uDaW2aMISB4-unsplash.jpg &
+set-bg &
 ~/.config/polybar/launch.sh --forest &
 picom &
 dunst &
@@ -35,19 +34,25 @@ bspc rule -a firefox rectangle 1920x1080+0+0 center=true
 
 # force apps to open in specific workspaces
 bspc rule -a discord desktop=9 state=tiled
+bspc rule -a teams-for-linux desktop=9 state=tiled
 
 # start up apps
 alacritty &
-firefox-dev &
+. default-browser ; \
+  $DEFAULT_BROWSER &
+#gtk-launch FFPWA-01HP9YP27NA64X95RWYXNZWFPX & 
+#gtk-launch FFPWA-01HP9Z1M83VESJY77ZT6925R3T &
 
 # set monitors
 EXTERNAL=HDMI1
+EXTERNAL_MODE=1920x1080
 PRIMARY=eDP1
 
 if [[ $(xrandr -q | grep "$EXTERNAL connected") ]]; then
     xrandr \
-        --output $EXTERNAL --primary --mode 1920x1080 --rotate normal --right-of $PRIMARY \
+        --output $EXTERNAL --primary --mode $EXTERNAL_MODE --rotate normal --left-of $PRIMARY \
         --output $PRIMARY --mode 1920x1080 --rotate normal
+        #--output VIRTUAL1 --mode 2800x1752_60.00  --left-of HDMI1
     # switch order of monitors
     bspc wm -O $EXTERNAL $PRIMARY
 

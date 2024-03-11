@@ -31,17 +31,18 @@ ctrl + alt + b
 # <----- apps ------>
 # browser
 ctrl + super + w
-	firefox-dev
+	browser
 
 ctrl + super + c
-	firefox-dev --new-window https://calendar.google.com
+  gtk-launch FFPWA-01HP9YP27NA64X95RWYXNZWFPX
 
 ctrl + super + m
-    spotify
+  browser --new-window https://mail.google.com
 
+# This is Firefox PWA notion.
+# You can find it in ~/.local/share/applications/FFPWA-01HP9Z1M83VESJY77ZT6925R3T
 ctrl + super + n
-	firefox-dev --new-window https://notion.so
-
+  gtk-launch FFPWA-01HP9Z1M83VESJY77ZT6925R3T
 
 # terminal emulator
 super + Return
