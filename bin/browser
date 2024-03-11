@@ -1,4 +1,4 @@
 #!/bin/bash
 
 export DEFAULT_BROWSER=floorp
-
+$DEFAULT_BROWSER "$@"
