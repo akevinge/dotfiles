@@ -1,4 +1,4 @@
 #!/bin/bash
 
-export DEFAULT_BROWSER=floorp
+export DEFAULT_BROWSER=thorium-browser
 $DEFAULT_BROWSER "$@"

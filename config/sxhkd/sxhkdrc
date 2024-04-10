@@ -20,6 +20,9 @@ XF86AudioLowerVolume
 super + r
    if [[ $(xrandr -q | grep 'HDMI-1 connected') ]]; then rofi -show drun -no-config -theme $HOME/.config/rofi/launcher.rasi -monitor HDMI-1; else rofi -show drun -no-config -theme $HOME/.config/rofi/launcher.rasi; fi
 
+ctrl + super + s
+  web-search
+
 # language
 ctrl + alt + {1, 2}
     ibus engine {xkb:us::eng, sunpinyin}
@@ -35,13 +38,13 @@ ctrl + super + w
   browser
 
 ctrl + super + c
-  browser --new-window https://www.calendar.google.com
+  bash -ic google-calendar
 
 ctrl + super + m
-  browser --new-window https://www.mail.google.com
+  bash -ic gmail
 
 ctrl + super + n
-  browser --new-window https://www.notion.so
+  bash -ic notion
 
 # terminal emulator
 super + Return
