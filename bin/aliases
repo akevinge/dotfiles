@@ -17,5 +17,7 @@ alias hibernate="sudo systemctl hibernate"
 # Assumes ~/.local/share/applications/[name].desktop
 alias google-calendar="launch google-calendar"
 alias notion="launch notion"
-alias micrsoft-teams="launch micrsoft-teams"
+alias teams="launch teams"
 alias gmail="launch gmail"
+alias outlook="launch outlook"
+
