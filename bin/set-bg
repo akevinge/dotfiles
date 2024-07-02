@@ -2,7 +2,7 @@
 
 FULL_DOTFILE_PATH="$(dirname "$(realpath $0)")/../"
 
-WALLPAPER="$FULL_DOTFILE_PATH/wallpapers/ubuntu-magenta-blue-1920x1080.png"
+WALLPAPER="$FULL_DOTFILE_PATH/wallpapers/minimal-city.jpg"
 
 ~/.config/polybar/material/scripts/pywal.sh $WALLPAPER ; \
 feh --bg-fill "$WALLPAPER"
