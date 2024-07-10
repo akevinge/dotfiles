@@ -1,4 +1,4 @@
 #!/bin/bash
 
-export DEFAULT_BROWSER=thorium-browser
+export DEFAULT_BROWSER=google-chrome
 $DEFAULT_BROWSER "$@"

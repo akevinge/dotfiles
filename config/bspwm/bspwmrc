@@ -17,6 +17,7 @@ xss-lock xsecurelock &
 bspc config border_width 0
 bspc config top_padding 0
 bspc config bottom_padding 0
+bspc config left_padding 0
 bspc config focused_border_color "$color1"
 bspc config normal_border_color "$color15"
 
@@ -67,5 +68,9 @@ xsetroot -cursor_name left_ptr
 synclient MaxTapTime=0
 synclient VertScrollDelta=-111
 
-# scrolling idk
-xinput --set-prop 15 303 1
+# xinput settings (run xinput list, xinput list-props <ID>)
+# AMD F13 laptop settings:
+# Enable natural scrolling
+xinput --set-prop 11 305 1
+# Enable tap clicking
+xinput --set-prop 11 326 1

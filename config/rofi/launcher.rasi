@@ -8,10 +8,10 @@
  */
 
 configuration {
-	font:							"Fantasque Sans Mono 10";
+	font:							"Fantasque Sans Mono 20";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
-    display-drun: 					"";
+    display-drun: 					"🔍";
     drun-display-format:            "{name}";
     disable-history:                false;
     fullscreen:                     false;
@@ -28,7 +28,7 @@ window {
 	border:							0px;
 	border-color:					@ac;
     border-radius:                  0px;
-	width:							550px;
+	width:							750px;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
@@ -39,7 +39,7 @@ prompt {
 	padding: 						0px 5px 0px -10px;
 	background-color: 				@al;
 	text-color: 					@bar;
-	font:							"Material\-Design\-Iconic\-Font 12";
+	font:							"Material\-Design\-Iconic\-Font 20";
 }
 
 entry {
@@ -67,7 +67,7 @@ inputbar {
 
 listview {
     background-color:               @al;
-    padding:                        10px 10px 10px 10px;
+    padding:                        20px 20px 20px 20px;
     columns:                        2;
     lines:                          7;
     spacing:                        5px;
@@ -97,7 +97,7 @@ element {
 element-icon {
     background-color:               transparent;
     text-color:               		inherit;
-    size:                           24px;
+    size:                           35px;
     border:                         0px;
 }
 
@@ -106,8 +106,8 @@ element-text {
     text-color:               		inherit;
     expand:                         true;
     horizontal-align:               0;
-    vertical-align:                 0.5;
-    margin:                         0px 2.5px 0px 2.5px;
+    vertical-align:                 1.0;
+    margin:                         0px 5px 0px 5px;
 }
 
 element selected {

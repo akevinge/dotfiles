@@ -9,7 +9,7 @@
     geometry = "300x5-30+20"
 
     # <-- Position -->
-    offset = 4x40
+    offset = 4x20
     origin = top-right
     gap_size = 8
 

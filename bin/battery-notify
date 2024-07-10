@@ -7,8 +7,8 @@ FULL_DOTFILE_PATH="$(dirname "$(realpath $0)")/.."
 SOURCE_CONFIG_PATH="$FULL_DOTFILE_PATH/config"
 SOURCE_BIN_PATH="$FULL_DOTFILE_PATH/bin"
 
-PERCENT=$(cat /sys/class/power_supply/BAT0/capacity)
-STATUS=$(cat /sys/class/power_supply/BAT0/status)
+PERCENT=$(cat /sys/class/power_supply/BAT1/capacity)
+STATUS=$(cat /sys/class/power_supply/BAT1/status)
 
 if [ ${PERCENT} -lt 20 ] && [ ${STATUS} = "Discharging" ];
 then
@@ -22,9 +22,4 @@ then
 	    RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\
 	    RAWRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\
 	    RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"
-fi
-
-if [ ${PERCENT} -gt 85 ] && [ ${STATUS} = "Charging" ];
-then
-  notify-send "STOP CHARGING OVER 85."
 fi
