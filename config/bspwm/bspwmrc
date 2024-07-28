@@ -1,14 +1,18 @@
 #!/bin/bash
 
+CONFIG=$HOME/.config
+PRIMARY_MONITOR=eDP
+PRIMARY_MONITOR_MODE=2256x1504
+EXTERNAL_MONITOR=DisplayPort-2
+EXTERNAL_MONITOR_MODE=2256x1504
+
+
 # UI
 pgrep -x sxhkd > /dev/null || sxhkd &
 set-bg &
-~/.config/polybar/launch.sh --forest &
+$CONFIG/polybar/launch.bash $CONFIG/polybar/minimal/dark.ini $EXTERNAL_MONITOR &
 picom &
 dunst &
-
-# source colors from pywal
-# . "${HOME}/.cache/wal/colors.sh"
 
 # Registry xsecurelock as xss locker.
 xss-lock xsecurelock &
@@ -31,31 +35,23 @@ bspc config focus_follows_pointer false
 bspc config gapless_monocle      false
 bspc config borderless_monocle   false
 
-bspc rule -a firefox rectangle 1920x1080+0+0 center=true
-
 # force apps to open in specific workspaces
 bspc rule -a discord desktop=9 state=tiled
-bspc rule -a teams-for-linux desktop=9 state=tiled
 
 # start up apps
 alacritty &
 browser &
 
-# set monitors
-EXTERNAL=HDMI1
-EXTERNAL_MODE=1920x1080
-PRIMARY=eDP1
-
-if [[ $(xrandr -q | grep "$EXTERNAL connected") ]]; then
+if [[ $(xrandr -q | grep "$EXTERNAL_MONITOR connected") ]]; then
     xrandr \
-        --output $EXTERNAL --primary --mode $EXTERNAL_MODE --rotate normal --left-of $PRIMARY \
-        --output $PRIMARY --mode 1920x1080 --rotate normal
-        #--output VIRTUAL1 --mode 2800x1752_60.00  --left-of HDMI1
-    # switch order of monitors
-    bspc wm -O $EXTERNAL $PRIMARY
+        --output $EXTERNAL_MONITOR --primary --mode $EXTERNAL_MONITOR_MODE --rotate normal --left-of $PRIMARY_MONITOR \
+        --output $PRIMARY_MONITOR --mode $PRIMARY_MONITOR_MODE --rotate normal
 
-    bspc monitor $EXTERNAL -d 1 2 3 4 5 6 7 8
-    bspc monitor $PRIMARY -d 9
+    # switch order of monitors
+    bspc wm -O $EXTERNAL_MONITOR $PRIMARY_MONITOR
+
+    bspc monitor $EXTERNAL_MONITOR -d 1 2 3 4 5 6 7 8
+    bspc monitor $PRIMARY_MONITOR -d 9
 else
     bspc monitor -d 1 2 3 4 5 6 7 8 9
 fi
